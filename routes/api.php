@@ -1,29 +1,24 @@
 <?php
 
-Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
+Route::group(['middleware' => 'api'], function () {
 
-    Route::post('register', [
-        'as'    => 'register',
-        'uses'  => 'AuthController@register'
+    Route::prefix('auth')->group(function () {
+
+        Route::post('login', [
+            'as'    => 'login',
+            'uses'  => 'AuthController@login'
+        ]);
+
+        Route::post('logout', [
+            'as'    => 'logout',
+            'uses'  => 'AuthController@logout'
+        ]);
+    });
+
+    Route::get('home/info', [
+        'as'    => 'home.info',
+        'uses'  => 'Api\HomeController@index'
     ]);
 
-    Route::post('login', [
-        'as'    => 'login',
-        'uses'  => 'AuthController@login'
-    ]);
-
-    Route::post('logout', [
-        'as'    => 'logout',
-        'uses'  => 'AuthController@logout'
-    ]);
-
-    Route::post('refresh', [
-        'as'    => 'refresh',
-        'uses'  => 'AuthController@refresh'
-    ]);
-
-    Route::post('me', [
-        'as'    => 'me',
-        'uses'  => 'AuthController@me'
-    ]);
+    Route::resource('employees', 'Api\EmployeeController');
 });

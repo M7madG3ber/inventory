@@ -6,3 +6,8 @@
 <script src="{{ asset('backend/js/ruang-admin.min.js') }}"></script>
 <script src="{{ asset('backend/vendor/chart.js/Chart.min.js') }}"></script>
 <script src="{{ asset('backend/js/demo/chart-area-demo.js') }}"></script>
+<script>
+    $(function(){
+        $("#loader").css('display','none');
+    })
+</script>

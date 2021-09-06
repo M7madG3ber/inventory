@@ -26,6 +26,7 @@ class LoginRequest extends FormRequest
         return [
             'email' => 'required|email|exists:users',
             'password' => 'required|min:6',
+            'remember_me' => 'required'
         ];
     }
 
@@ -34,6 +35,7 @@ class LoginRequest extends FormRequest
         return [
             'email' => 'Email',
             'password' => 'Password',
+            'remember_me' => 'Remember Me',
         ];
     }
 }
